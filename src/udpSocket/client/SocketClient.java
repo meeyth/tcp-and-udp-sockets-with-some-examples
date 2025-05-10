@@ -1,15 +1,14 @@
 package udpSocket.client;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.Scanner;
 
 public class SocketClient {
     public static void main(String[] args) {
-        BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
+        Scanner inFromUser = new Scanner(System.in);
 
         try {
             DatagramSocket clientSocket = new DatagramSocket();
@@ -19,7 +18,7 @@ public class SocketClient {
             byte []sendData;
             byte []receiveData = new byte[1024];
 
-            String sentence = inFromUser.readLine();
+            String sentence = inFromUser.nextLine();
             sendData = sentence.getBytes();
 
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
